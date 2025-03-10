@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<!-- 
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        textarea,
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button a {  /* Style the link inside the button */
+            color: white;
+            text-decoration: none;
+        }
+    </style> -->
+
+
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" />
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready( function () {
+    $('#myTable').DataTable({
+        autoWidth: false 
+    });
+});
+      </script>
+    
+
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        button {
+            padding: 5px 10px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .add-button {
+            background-color: #4CAF50; /* Green */
+            color: white;
+        }
+        .edit-button {
+            background-color: #008CBA; /* Blue */
+            color: white;
+        }
+        .delete-button {
+            background-color: #f44336; /* Red */
+            color: white;
+        }
+        #form-container {
+            display: none; /* Initially hidden */
+            width: 80%;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+        }
+        .form-buttons {
+            text-align: right;
+        } -->
+<!-- 
+    </style>
+</head>
+<body>
+    <h1>Task List</h1>
+    <button class="add-button"><a href="{% url 'task_create' %}">ADD TASK</a></button>
+<br>
+<br>
+    <table id="myTable"> 
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in task %}
+            <tr>
+                <td>{{task.title}}</td>
+                <td>{{task.description}}</td>
+                <td>{{task.due_date}}</td>
+                <td>{{task.status}}</td>
+                <td>
+                    <button class="edit-button"><a href="{% url 'task_update' task.id %}">Edit</a></button>
+                    <button class="delete-button"><a href="{% url 'task_delete' task.id %}">Delete</a></button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
